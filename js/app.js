@@ -18,26 +18,18 @@ var txtMensaje  = $('#txtMensaje');
 var usuario;
 
 
+var url=window.location.href;
+var swLocation='/pwa-twittor/sw.js';
+
 
 if ( navigator.serviceWorker ) {
-    navigator.serviceWorker.register('/sw.js')
-    .then(req=>{
-
-        //prueba sync
-  /*       setTimeout(()=>{
-            req.sync.register('posteo-gatios');
-            console.log('se enviaron fotos de gatios al server');
-        },3000) */
-
-        //prueba notificacion
-        Notification.requestPermission().then(
-            result=>{
-                console.log(result);
-                req.showNotification('Hola')
-            }
-        )
-
-    })
+    if(url.includes('localhost')){
+        navigator.serviceWorker.register('/sw.js')
+    }
+    else{
+        navigator.serviceWorker.register(swLocation)
+    }
+    
 }
 
 // ===== Codigo de la aplicación
