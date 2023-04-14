@@ -21,6 +21,7 @@ var usuario;
 var url=window.location.href;
 var swLocation='/pwa-twittor/sw.js';
 
+alert(url);
 
 if ( navigator.serviceWorker ) {
     if(url.includes('localhost')){
